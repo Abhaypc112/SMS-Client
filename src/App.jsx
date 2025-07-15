@@ -1,0 +1,34 @@
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import AuthProtuctRouter from './routes/auth/AuthProtuctRouter';
+import AuthRoutes from './routes/auth/authRoutes';
+import AdminProtuctRouter from './routes/admin/AdminProtuctRouter';
+import AdminRoutes from './routes/admin/AdminRoutes';
+import StaffProtuctRouter from './routes/staff/StaffProtuctRouter';
+import StaffRoutes from './routes/staff/StaffRoutes';
+
+const App = () => {
+  return (
+    <>
+      <Routes>
+        <Route element={<AuthProtuctRouter/>}>
+          { AuthRoutes.length > 0 && AuthRoutes.map(({path,element},index)=>{
+            return <Route key={index} path={path} element={element}/>
+          })}
+        </Route>
+        <Route element={<AdminProtuctRouter/>}>
+          { AdminRoutes.length > 0 && AdminRoutes.map(({path,element},index)=>{
+            return <Route key={index} path={path} element={element}/>
+          })}
+        </Route>
+        <Route element={<StaffProtuctRouter/>}>
+          { StaffRoutes.length > 0 && StaffRoutes.map(({path,element},index)=>{
+            return <Route key={index} path={path} element={element}/>
+          })}
+        </Route>
+      </Routes>
+    </>
+  )
+}
+
+export default App
