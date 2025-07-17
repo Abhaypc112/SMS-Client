@@ -6,6 +6,7 @@ import AdminProtuctRouter from './routes/admin/AdminProtuctRouter';
 import AdminRoutes from './routes/admin/AdminRoutes';
 import StaffProtuctRouter from './routes/staff/StaffProtuctRouter';
 import StaffRoutes from './routes/staff/StaffRoutes';
+import Layout from './layout/Layout';
 
 const App = () => {
   return (
@@ -18,12 +19,12 @@ const App = () => {
         </Route>
         <Route element={<AdminProtuctRouter/>}>
           { AdminRoutes.length > 0 && AdminRoutes.map(({path,element},index)=>{
-            return <Route key={index} path={path} element={element}/>
+            return <Route key={index} path={path} element={<Layout>{element}</Layout>}/>
           })}
         </Route>
         <Route element={<StaffProtuctRouter/>}>
           { StaffRoutes.length > 0 && StaffRoutes.map(({path,element},index)=>{
-            return <Route key={index} path={path} element={element}/>
+            return <Route key={index} path={path} element={<Layout>{element}</Layout>}/>
           })}
         </Route>
       </Routes>

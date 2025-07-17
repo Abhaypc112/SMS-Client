@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { userLogin } from '../redux/slices/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
 import { LoginVlidation } from '../validation/loginValidation';
+import Navbar from '../components/Navbar';
+import Sidebar from '../components/Sidebar';
+import Layout from '../layout/Layout';
 
 const LoginPage = () => {
     const [formData, setFormData] = useState({email:"", password : ""});
@@ -31,7 +34,8 @@ const LoginPage = () => {
     },[role])
 
   return (
-    <Box sty width="100%" height="100vh" display='flex' justifyContent="center" alignItems="center">
+    <Box>
+      <Box sty width="100%" height="100vh" display='flex' justifyContent="center" alignItems="center">
       <Box display="flex" flexDirection="column" width={300}>
         <Typography  fontSize='10px' color='red'>{error}</Typography>
         <Typography fontSize='10px' color='red'>{loginError.email}</Typography>
@@ -42,6 +46,7 @@ const LoginPage = () => {
             Login
           </Button>
       </Box>
+    </Box>
     </Box>
   )
 }
