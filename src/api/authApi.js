@@ -1,5 +1,5 @@
 import axios from 'axios';
-const AUTH = 'http://localhost:5000/api';
+const AUTH = 'https://sms-server-33i2.onrender.com/api';
 
 export const loginApi = async(loginData) => {
     const res = await axios.post(`${AUTH}/auth/login`,loginData);
