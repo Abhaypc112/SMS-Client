@@ -12,3 +12,7 @@ export const deletePermissionApi = async(permissionId) => {
     const response = await axiosInstance.delete(`/permission/delete-permission/${permissionId}`);
     return response.data.data;
 };
+export const getStaffPermissionById = async() => {
+    const response = await axiosInstance.get(`/permission/get-permission-by-id/`);
+    return response.data.data;
+};

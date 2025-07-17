@@ -12,17 +12,25 @@ import {
   MenuItem,
   Button
 } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
 import StudentFormModal from './StudentForm';
-import StudentViewModal from './StudentViewModal';
 import StudentEditFormModal from './StudentEditFormModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { createStudent, deletetudent, getAllStudents, updateStudent } from '../../redux/slices/student/studentSlice';
+import { getStaffPermission } from '../../redux/slices/permission/staffPermissionSlice';
+import StaffStudentViewModal from './StaffStudentViewModal';
 
-const StudentTable = () => {
+const StaffStudentTable = () => {
   const dispatch = useDispatch();
   const {students} = useSelector((state) => state.student);
+  const {Staffpermissions} = useSelector((state) => state.staffPermission);
   const [studentData, setStudentData] = useState(null);
+
+const getActionsForStudent = (studentId) => {
+  const p = Staffpermissions && Staffpermissions.find((perm) => perm.studentId === studentId);
+  console.log(p)
+  return p ? p.actions : [];
+};
+
 
   const handleViewStudent = (data) => {
     setViewOpen(true)
@@ -39,12 +47,10 @@ const StudentTable = () => {
   const handleUpdateStudent = (studentData) => {
     dispatch(updateStudent(studentData))
   }
-  const handleDeleteStudent = (studentId) => {
-    dispatch(deletetudent(studentId))
-  }
 
   useEffect(()=>{
     dispatch(getAllStudents())
+    dispatch(getStaffPermission()) 
   },[])
 
     const[formOpen,setFormOpen] = useState(false);
@@ -55,8 +61,8 @@ const StudentTable = () => {
     <Box>
         <Typography sx={{marginTop:6, fontSize:20, fontWeight:'bold'}}>Student Details</Typography>
          <Box display='flex' justifyContent='space-between' alignItems='center' sx={{mt:4, position:'relative'}}>
-            <TextField name="text"  variant="outlined" label="Search" margin="normal" type="text" size='small' sx={{width:"500px", display:{xs:'none',md:'flex'}}} />
-            <FormControl sx={{ m: 1, minWidth: 200 ,display:{xs:'none',md:'flex'} }} size="small">
+            <TextField name="text" variant="outlined" label="Search" margin="normal" type="text" size='small' sx={{width:"500px"}} />
+            <FormControl sx={{ m: 1, minWidth: 200 }} size="small">
                 <InputLabel id="status-label">Status</InputLabel>
                 <Select
                 labelId="status-label"
@@ -66,13 +72,10 @@ const StudentTable = () => {
                 <MenuItem value={20}>Inactive</MenuItem>
                 </Select>
             </FormControl>
-            <Button onClick={()=>setFormOpen(true)} sx={{height:'40px'}} variant="contained" color="primary">
-            <AddIcon/> Create Student
-            </Button>
         </Box>
         <Box maxHeight={450} sx={{overflowY:'auto', overflowX:'hidden',mt: 4, border:'1px solid rgba(192, 189, 189, 0.5)'}}>
         <TableContainer component={Paper} sx={{margin: 'auto', border:'1px solid rgba(192, 189, 189, 0.5)' }}>
-          <Table sx={{ minWidth: 500,  }} aria-label="simple table">
+          <Table sx={{ minWidth: 650,  }} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell sx={{ fontWeight: 'bold' }}>Select</TableCell>
@@ -86,27 +89,30 @@ const StudentTable = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {students && students.map((student, index) => (
-                <TableRow key={index}>
-                  <TableCell><Checkbox></Checkbox></TableCell>
-                  <TableCell>{student.name}</TableCell>
-                  <TableCell>{student.age}</TableCell>
-                  <TableCell>{student.grade}</TableCell>
-                  <TableCell>{student.contactInfo}</TableCell>
-                  <TableCell>{student.isActive?"Active":"Inactive"}</TableCell>
-                  <TableCell sx={{cursor:'pointer'}} onClick={() => handleEditStudent(student)}>Edit</TableCell>
-                  <TableCell sx={{cursor:'pointer'}} onClick={() => handleViewStudent(student)}> View </TableCell>
-                </TableRow>
-              ))}
+              {students && students.map((student, index) => {
+                const actions = getActionsForStudent(student._id);
+                return (
+                     <TableRow key={index}>
+                    <TableCell><Checkbox></Checkbox></TableCell>
+                    <TableCell>{student.name}</TableCell>
+                    <TableCell>{student.age}</TableCell>
+                    <TableCell>{student.grade}</TableCell>
+                    <TableCell>{student.contactInfo}</TableCell>
+                    <TableCell>{student.isActive?"Active":"Inactive"}</TableCell>
+                    {actions.includes("update") ? <TableCell sx={{cursor:'pointer'}} onClick={() => handleEditStudent(student)}>Edit</TableCell> :<TableCell>Nil</TableCell>}
+                    <TableCell sx={{cursor:'pointer'}} onClick={() => handleViewStudent(student)}> View </TableCell>
+                    </TableRow>
+                )
+              })}
             </TableBody>
           </Table>
         </TableContainer>
       </Box>
         <StudentFormModal open={formOpen} onClose={() => setFormOpen(false)} onSave={handleCreateStudent} />
-        <StudentViewModal open={viewOpen} onClose={() => setViewOpen(false)} student={studentData} onDelete={handleDeleteStudent}/>
+        <StaffStudentViewModal open={viewOpen} onClose={() => setViewOpen(false)} student={studentData} />
         <StudentEditFormModal open={editFormOpen} onClose={() => setEditFormOpen(false)} student={studentData} onSave={handleUpdateStudent}/>
     </Box>
   )
 }
 
-export default StudentTable
+export default StaffStudentTable

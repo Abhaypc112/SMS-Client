@@ -73,8 +73,8 @@ const StaffTable = () => {
     <Box>
         <Typography sx={{marginTop:6, fontSize:20, fontWeight:'bold'}}>Staff Details</Typography>
             <Box display='flex' justifyContent='space-between' alignItems='center' sx={{mt:4}}>
-            <TextField name="text" variant="outlined" label="Search" margin="normal" type="text" size='small' sx={{width:"500px"}} />
-            <FormControl sx={{ m: 1, minWidth: 200 }} size="small">
+            <TextField name="text" variant="outlined" label="Search" margin="normal" type="text" size='small' sx={{width:"500px", display:{xs:'none',md:'flex'}}} />
+            <FormControl sx={{ m: 1, minWidth: 200, display:{xs:'none',md:'flex'} }} size="small">
                 <InputLabel id="status-label">Status</InputLabel>
                 <Select
                 labelId="status-label"

@@ -4,10 +4,12 @@ import React from 'react'
 
 const Navbar = () => {
   const currentPath = window.location.pathname.split('/');
+  const userName = localStorage.getItem('userName');
 
   return (
-    <Box width='100%' zIndex={100} height={35} bgcolor='#2A6047' position='fixed'sx={{ borderRadius:2, marginTop:1, p:2, display:'flex', alignItems:'center', gap:2}}>
-        {
+    <Box zIndex={100} height={35} bgcolor='#2A6047' position='fixed'sx={{ width:{md:'80%',xs:'85%'}, borderRadius:2, marginTop:1, p:2, display:'flex', justifyContent:'space-between', alignItems:'center', gap:2}}>
+       <Box sx={{display:'flex'}}>
+         {
           currentPath.map((path,index)=>{
             return(
               <Box key={index} sx={{display:'flex'}}>
@@ -17,6 +19,8 @@ const Navbar = () => {
             )
           })
         }
+       </Box>
+        <Typography sx={{color:'white', mr:5}}>{userName}</Typography>
     </Box>
   )
 }

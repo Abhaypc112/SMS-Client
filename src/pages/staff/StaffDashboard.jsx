@@ -1,10 +1,12 @@
-import React from 'react'
+
+import { Box } from '@mui/material'
+import StaffStudentTable from '../../components/student/StaffStudentTable'
 
 const StaffDashboard = () => {
   return (
-    <div>
-      StaffDashboard
-    </div>
+    <Box>
+      <StaffStudentTable/>
+    </Box>
   )
 }
 

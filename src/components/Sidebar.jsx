@@ -3,6 +3,14 @@ import { useNavigate } from 'react-router-dom'
 
 const Sidebar = () => {
     const navigate = useNavigate();
+    const handleLogOut = () => {
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('role');
+        localStorage.removeItem('userName');
+        navigate('/login')
+    }
+    const role = localStorage.getItem('role')
+
   return (
     <Box width={230} p={1} bgcolor='white' zIndex={100} boxShadow = '0px 4px 12px rgba(208, 205, 205, 0.5)' border= '1px solid rgba(192, 189, 189, 0.5)' height='100vh' position='fixed'>
         <Box sx={{display:'flex', justifyContent:'center', alignItems:'center', gap:2}}>
@@ -22,12 +30,12 @@ const Sidebar = () => {
             <Divider sx={{marginTop:2}}/>
         <Box sx={{display:'flex', flexDirection:'column', mt:10, gap:1}}>
             <Button onClick={()=>navigate('/admin/students')} sx={{justifyContent: "flex-start"}}>Students</Button><Divider/>
-            <Button onClick={()=>navigate('/admin/staffs')} sx={{justifyContent: "flex-start"}}>Staffs</Button><Divider/>
+            {role === "admin" && <><Button onClick={()=>navigate('/admin/staffs')} sx={{justifyContent: "flex-start"}}>Staffs</Button><Divider/></>} 
             {/* <Button onClick={()=>navigate('/admin/permission')} sx={{justifyContent: "flex-start"}}>Permissions</Button><Divider/> */}
             <Button sx={{justifyContent: "flex-start"}}>Coming soon</Button><Divider/>
             <Button sx={{justifyContent: "flex-start"}}>Coming soon</Button><Divider/>
         </Box>
-        <Button sx={{marginTop:40, bgcolor:'#EAEFEE', width:'100%'}}>Log Out</Button>
+        <Button onClick={handleLogOut} sx={{marginTop:40, bgcolor:'#EAEFEE', width:'100%'}}>Log Out</Button>
     </Box>
   )
 }

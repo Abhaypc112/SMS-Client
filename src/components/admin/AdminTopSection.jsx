@@ -19,22 +19,22 @@ const AdminTopSection = () => {
    },[])
 
   return (
-    <Box display="flex" justifyContent="space-between">
-        <Box sx={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center',}} borderRadius="5px" width="300px" height="125px" bgcolor="white" boxShadow = '0px 4px 12px rgba(208, 205, 205, 0.5)' border= '1px solid rgba(192, 189, 189, 0.5)'>
+    <Box sx={{flexDirection:{xs:'column', md:'row', gap:10}}} display="flex" justifyContent="space-between">
+        <Box sx={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center',width:{xs:'90%',md:'30%'}}} borderRadius="5px"  height="125px" bgcolor="white" boxShadow = '0px 4px 12px rgba(208, 205, 205, 0.5)' border= '1px solid rgba(192, 189, 189, 0.5)'>
           <Typography fontSize={25} fontWeight='bold'>Total Student</Typography>
           <Box sx={{display:'flex', gap:3, alignItems:'center'}}>
             <Box sx={{bgcolor:'#EAEFEE', p:1, borderRadius:3}}><PersonIcon color='primary' fontSize='large'/></Box>
             <Typography fontSize={20} fontWeight='bold'> {students && students.length}</Typography>
           </Box>
         </Box>
-        <Box sx={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}} borderRadius="5px" width="300px" height="125px" bgcolor="white" boxShadow = '0px 4px 12px rgba(208, 205, 205, 0.5)' border= '1px solid rgba(192, 189, 189, 0.5)'>
+        <Box sx={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', width:{xs:'90%',md:'30%'}}} borderRadius="5px" height="125px" bgcolor="white" boxShadow = '0px 4px 12px rgba(208, 205, 205, 0.5)' border= '1px solid rgba(192, 189, 189, 0.5)'>
           <Typography fontSize={25} fontWeight='bold'>Total Staff</Typography>
           <Box sx={{display:'flex', gap:3, alignItems:'center'}}>
             <Box sx={{bgcolor:'#EAEFEE', p:1, borderRadius:3}}><PersonIcon color='error' fontSize='large'/></Box>
             <Typography fontSize={20} fontWeight='bold'> {staffs && staffs.length}</Typography>
           </Box>
         </Box>
-        <Box sx={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}} borderRadius="5px" width="300px" height="125px" bgcolor="white" boxShadow = '0px 4px 12px rgba(208, 205, 205, 0.5)' border= '1px solid rgba(192, 189, 189, 0.5)'>
+        <Box sx={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', width:{xs:'90%',md:'30%'}}} borderRadius="5px" height="125px" bgcolor="white" boxShadow = '0px 4px 12px rgba(208, 205, 205, 0.5)' border= '1px solid rgba(192, 189, 189, 0.5)'>
           <Typography fontSize={25} fontWeight='bold'>Total Permissions</Typography>
           <Box sx={{display:'flex', gap:3, alignItems:'center'}}>
             <Box sx={{bgcolor:'#EAEFEE', p:1, borderRadius:3}}><PersonIcon color='warning' fontSize='large'/></Box>
