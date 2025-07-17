@@ -1,9 +1,8 @@
 import React from 'react'
 import LoginPage from '../../pages/LoginPage';
 
-const AuthRoutes = [
+export const AuthPages = [
     {path : '/', element : <LoginPage/>},
     {path : '/login', element : <LoginPage/>},
 ];
 
-export default AuthRoutes;
