@@ -46,7 +46,7 @@ export default function NewPermissionForm({
   const handleSubmit = () => {
     onSave(formData);
     onClose();
-    setFormData({ staffId: "", studentId: "", actions: [] }); // reset
+    setFormData({ staffId: "", studentId: "", actions: [] }); 
   };
 
   const actionOptions = ["read", "create", "update", "delete"];
@@ -56,7 +56,6 @@ export default function NewPermissionForm({
       <DialogTitle>Add Permission</DialogTitle>
       <DialogContent dividers>
         <Box sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 1 }}>
-          {/* Staff dropdown */}
           <FormControl fullWidth>
             <InputLabel id="staff-label">Staff</InputLabel>
             <Select
@@ -73,8 +72,6 @@ export default function NewPermissionForm({
               ))}
             </Select>
           </FormControl>
-
-          {/* Student dropdown */}
           <FormControl fullWidth>
             <InputLabel id="student-label">Student</InputLabel>
             <Select
@@ -91,8 +88,6 @@ export default function NewPermissionForm({
               ))}
             </Select>
           </FormControl>
-
-          {/* Permissions multi-select */}
           <FormControl fullWidth>
             <InputLabel id="actions-label">Permissions</InputLabel>
             <Select

@@ -67,8 +67,6 @@ export default function StaffEditFormModal({ open, onClose, staff, onSave }) {
             onChange={handleChange}
             required
           />
-
-          {/* ✅ Role dropdown */}
           <TextField
             select
             label="Role"
@@ -82,7 +80,6 @@ export default function StaffEditFormModal({ open, onClose, staff, onSave }) {
             <MenuItem value="staff">Staff</MenuItem>
           </TextField>
 
-          {/* ✅ Active status switch */}
           <FormControlLabel
             control={
               <Switch

@@ -23,11 +23,11 @@ const Sidebar = () => {
         <Box sx={{display:'flex', flexDirection:'column', mt:10, gap:1}}>
             <Button onClick={()=>navigate('/admin/students')} sx={{justifyContent: "flex-start"}}>Students</Button><Divider/>
             <Button onClick={()=>navigate('/admin/staffs')} sx={{justifyContent: "flex-start"}}>Staffs</Button><Divider/>
-            <Button onClick={()=>navigate('/admin/permission')} sx={{justifyContent: "flex-start"}}>Permissions</Button><Divider/>
+            {/* <Button onClick={()=>navigate('/admin/permission')} sx={{justifyContent: "flex-start"}}>Permissions</Button><Divider/> */}
             <Button sx={{justifyContent: "flex-start"}}>Coming soon</Button><Divider/>
             <Button sx={{justifyContent: "flex-start"}}>Coming soon</Button><Divider/>
         </Box>
-        <Button sx={{marginTop:33, bgcolor:'#EAEFEE', width:'100%'}}>Log Out</Button>
+        <Button sx={{marginTop:40, bgcolor:'#EAEFEE', width:'100%'}}>Log Out</Button>
     </Box>
   )
 }

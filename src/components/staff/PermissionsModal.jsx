@@ -41,7 +41,6 @@ export default function PermissionsModal({
 
   return (
     <>
-      {/* Main Modal to list permissions */}
       <Dialog open={open} onClose={onClose} fullWidth maxWidth="md">
         <DialogTitle>Permissions</DialogTitle>
 
