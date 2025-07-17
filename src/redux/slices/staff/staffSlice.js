@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createStaffApi, deleteStaffApi, getAllStaffsApi, updateStaffApi } from "../../../api/StaffApi";
+import { createStaffApi, deleteStaffApi, getAllStaffsApi, updateStaffApi } from '../../../api/staffApi'
 
 const initialState = {
     staffs : null,
