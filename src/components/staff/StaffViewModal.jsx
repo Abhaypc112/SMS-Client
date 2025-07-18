@@ -8,6 +8,7 @@ import {
   Typography,
   Box
 } from "@mui/material";
+import ConfirmDialogExample from "../ConfirmDialogExample";
 
 export default function StaffViewModal({ open, onClose, staff, onDelete }) {
   const handleDelete = () => {
@@ -38,14 +39,13 @@ export default function StaffViewModal({ open, onClose, staff, onDelete }) {
       </DialogContent>
 
       <DialogActions sx={{ justifyContent: "end" }}>
-        <Button
-          onClick={handleDelete}
-          variant="contained"
-          color="error"
-          disabled={!staff}
-        >
-          Delete
-        </Button>
+        <ConfirmDialogExample
+          open={open}
+          title="Delete"
+          message="Are you sure you want to delete?"
+          onOk={handleDelete}
+          color={'red'}
+        /> 
         <Button onClick={onClose} variant="contained" color="primary">
           Close
         </Button>

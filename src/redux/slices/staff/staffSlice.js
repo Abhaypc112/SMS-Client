@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { createStaffApi, deleteStaffApi, getAllStaffsApi, updateStaffApi } from '../../../api/staffApi'
+import { toast } from 'react-toastify';
 
 const initialState = {
     staffs : null,
@@ -64,6 +65,7 @@ const staffSlice = createSlice({
         .addCase(createStaff.fulfilled, (state, action) => {
             state.loading = false;
             state.staffs.push(action.payload)
+            toast.success('Create successfully');
         })
         .addCase(updateStaff.fulfilled, (state, action) => {
             const {_id} = action.payload;
@@ -71,12 +73,14 @@ const staffSlice = createSlice({
             console.log(index)
             state.staffs[index] = action.payload;
             state.loading = false;
+            toast.success('Update successfully');
         })
         .addCase(deleteStaff.fulfilled, (state, action) => {
             const {_id} = action.payload;
             const data = state.staffs.filter((staff)=>staff._id !== _id);
             state.staffs = data;
             state.loading = false;
+            toast.success('Delete successfully');
         })
     }
 })

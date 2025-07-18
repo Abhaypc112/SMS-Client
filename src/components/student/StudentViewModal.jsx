@@ -8,6 +8,7 @@ import {
   Button,
   Box
 } from "@mui/material";
+import ConfirmDialogExample from "../ConfirmDialogExample";
 
 export default function StudentViewModal({ open, onClose, student, onDelete }) {
   const handleDelete = () => {
@@ -42,9 +43,13 @@ export default function StudentViewModal({ open, onClose, student, onDelete }) {
         <Button onClick={onClose} variant="outlined" color="primary">
           Close
         </Button>
-        <Button onClick={handleDelete} variant="contained" color="error">
-          Delete
-        </Button>
+        <ConfirmDialogExample 
+          open={open}
+          title="Delete"
+          message="Are you sure you want to delete?"
+          onOk={handleDelete}
+          color={'red'}
+        />
       </DialogActions>
     </Dialog>
   );

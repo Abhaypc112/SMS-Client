@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { loginApi } from "../../../api/authApi";
+import { toast } from 'react-toastify';
 
 const initialState = {
     user: null,
@@ -36,6 +37,7 @@ const authSlice = createSlice({
         .addCase(userLogin.pending, (state) => {
             state.loading = true;
             state.error = null;
+            toast.success('Login Sucessfull');
         })
         .addCase(userLogin.fulfilled, (state, action) => {
             state.loading = false;

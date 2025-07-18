@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { createStudentApi, deleteStudentApi, getAllStudentsApi, updateStudentApi } from "../../../api/studentApi";
+import { toast } from 'react-toastify';
 
 const initialState = {
     students: null,
@@ -63,18 +64,21 @@ const studentSlice = createSlice({
         .addCase(createStudent.fulfilled, (state, action) => {
             state.loading = false;
             state.students.push(action.payload);
+            toast.success('Create successfully');
         })
         .addCase(updateStudent.fulfilled, (state, action) => {
             const {_id} = action.payload;
             const index = state.students.findIndex((student)=>student._id === _id);
             state.students[index] = action.payload;
             state.loading = false;
+            toast.success('Update successfully');
         })
         .addCase(deletetudent.fulfilled, (state, action) => {
             const {_id} = action.payload;
             const data = state.students.filter((student)=>student._id !== _id);
             state.students = data;
             state.loading = false;
+            toast.success('Delete successfully');
         })
     }
 })

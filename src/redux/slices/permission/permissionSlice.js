@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { createPermissionApi, deletePermissionApi, getAllPermissionsApi } from "../../../api/permissionApi";
+import { toast } from 'react-toastify';
 
 const initialState = {
     permissions: null,
@@ -65,6 +66,7 @@ const permissionSlice = createSlice({
             state.permissions.push(action.payload);
             state.loading = false;
             state.error = null;
+            toast.success('Create successfully');
         })
         .addCase(updatepermission.fulfilled, (state, action) => {
             const {_id} = action.payload;
@@ -72,6 +74,7 @@ const permissionSlice = createSlice({
             state.permissions[index] = action.payload ;
             state.loading = false;
             state.error = null;
+            toast.success('Update successfully');
         })
         .addCase(deletepermission.fulfilled, (state, action) => {
             const {_id} = action.payload;
@@ -79,6 +82,7 @@ const permissionSlice = createSlice({
             state.permissions = updateData ;
             state.loading = false;
             state.error = null;
+            toast.success('Delete successfully');
         })
 
     }
