@@ -7,9 +7,7 @@ const Layout = ({ children }) => {
 
   return (
     <Box className="layout" display='flex' width='100%'>
-        <Box sx={{
-          display : {xs:'none', md:'flex'}
-        }}><Sidebar /></Box>
+       <Sidebar />
       <Box className="content-wrapper" width='100%' sx={{marginLeft:{sx:0, md:30}}} px={3}>
       <Navbar />
         <Box className="content" sx={{overflowX:'hidden'}}  marginTop={12}>{children}</Box>

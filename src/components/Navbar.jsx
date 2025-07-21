@@ -7,7 +7,7 @@ const Navbar = () => {
   const userName = localStorage.getItem('userName');
 
   return (
-    <Box zIndex={100} height={35} bgcolor='#2A6047' position='fixed'sx={{ width:{md:'80%',xs:'85%'}, borderRadius:2, marginTop:1, p:2, display:'flex', justifyContent:'space-between', alignItems:'center', gap:2}}>
+    <Box zIndex={60} height={35} bgcolor='#2A6047' position='fixed'sx={{ width:{md:'80%',xs:'85%'}, borderRadius:2, marginTop:1, p:2, display:'flex', justifyContent:'space-between', alignItems:'center', gap:2}}>
        <Box sx={{display:'flex'}}>
          {
           currentPath.map((path,index)=>{

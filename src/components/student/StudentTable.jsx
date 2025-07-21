@@ -70,7 +70,7 @@ const StudentTable = () => {
             <AddIcon/> Create Student
             </Button>
         </Box>
-        <Box maxHeight={450} sx={{overflowY:'auto', overflowX:'hidden',mt: 4, border:'1px solid rgba(192, 189, 189, 0.5)'}}>
+        <Box maxHeight={450} sx={{maxWidth:{md:"100%",xs:'90%' },overflowY:'auto', overflowX:'hidden',mt: 4, border:'1px solid rgba(48, 206, 16, 0.5)'}}>
         <TableContainer component={Paper} sx={{margin: 'auto', border:'1px solid rgba(192, 189, 189, 0.5)' }}>
           <Table sx={{ minWidth: 500,  }} aria-label="simple table">
             <TableHead>

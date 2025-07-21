@@ -60,9 +60,9 @@ const getActionsForStudent = (studentId) => {
   return (
     <Box>
         <Typography sx={{marginTop:6, fontSize:20, fontWeight:'bold'}}>Student Details</Typography>
-         <Box display='flex' justifyContent='space-between' alignItems='center' sx={{mt:4, position:'relative'}}>
+         <Box display='flex' justifyContent='space-between' alignItems='center' sx={{mt:4, position:'relative', maxWidth:{md:"100%",xs:'90%' }}}>
             <TextField name="text" variant="outlined" label="Search" margin="normal" type="text" size='small' sx={{width:"500px"}} />
-            <FormControl sx={{ m: 1, minWidth: 200 }} size="small">
+            <FormControl sx={{ m: 1, minWidth: 200, display:{xs:'none',md:'flex'} }} size="small">
                 <InputLabel id="status-label">Status</InputLabel>
                 <Select
                 labelId="status-label"
@@ -73,7 +73,7 @@ const getActionsForStudent = (studentId) => {
                 </Select>
             </FormControl>
         </Box>
-        <Box maxHeight={450} sx={{overflowY:'auto', overflowX:'hidden',mt: 4, border:'1px solid rgba(192, 189, 189, 0.5)'}}>
+        <Box maxHeight={450} sx={{maxWidth:{md:"100%",xs:'90%' },overflowY:'auto', overflowX:'hidden',mt: 4, border:'1px solid rgba(192, 189, 189, 0.5)'}}>
         <TableContainer component={Paper} sx={{margin: 'auto', border:'1px solid rgba(192, 189, 189, 0.5)' }}>
           <Table sx={{ minWidth: 650,  }} aria-label="simple table">
             <TableHead>
